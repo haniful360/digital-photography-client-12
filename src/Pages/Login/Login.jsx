@@ -1,15 +1,32 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { AuthContext } from '../../providers/AuthProviders';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
+    const { signInUser } = useContext(AuthContext);
     const [show, setShow] = useState(false);
+    const [error, setError] = useState('')
     const { register, handleSubmit, formState: { errors } } = useForm();
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     const onSubmit = data => {
         console.log(data);
+        signInUser(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                toast('Login success full')
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                setError(error.message)
+            })
     }
 
     return (
@@ -26,7 +43,11 @@ const Login = () => {
                         {errors.email && <span className='text-red-400'>Email field is required</span>}
                         <div className="relative">
                             <input className="p-2 rounded-xl border w-full" type={show ? 'text' : 'password'} {...register("password", { required: true, maxLength: 20, minLength: 6 })} name="password" placeholder="Password" />
-                            {errors.password && <span className='text-red-400'>Password field is required</span>}
+                            {errors.password?.type === 'required' && <p className='text-red-400'>password is required</p>}
+                            {errors.password?.type === 'minLength' && <p className='text-red-400'>password must be 6 characters</p>}
+                            {errors.password?.type === 'maxLength' && <p className='text-red-400'>password must be less than  20 characters</p>}
+                            {errors.password?.type === 'pattern' && <p className='text-red-400'>password must have one uppercase, one lowercase one number and  one special character less than 20 character</p>}
+                            <span className='text-red-400'>{error}</span>
                             <p className='right-2 absolute top-3' onClick={() => setShow(!show)}>{show ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}</p>
 
                         </div>

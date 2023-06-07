@@ -7,7 +7,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 const SignUp = () => {
     const { createUser } = useContext(AuthContext);
-    const [error, setError] = useState();
+    const [error, setError] = useState('');
     const [show, setShow] = useState(false);
     const [confirmShow, setConfirmShow] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -19,12 +19,12 @@ const SignUp = () => {
             })
             .catch(err => {
                 console.log(err);
+                // setError(err.message)
             })
 
-        // if(data.password !== data.confirmPassword){
-        //     setError("Your password is don't match")
-        //     return;
-        // }
+        if(data.password !== data.confirmPassword){
+            return setError("Your password is don't match")
+        }
 
     }
 

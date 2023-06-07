@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-// import { AuthContext } from '../../../providers/AuthProviders';
+import { AuthContext } from '../../../providers/AuthProviders';
 
 const Header = () => {
-    // const {createUser} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
+    
     const navItem = <>
-     <li><Link to='/'>Home</Link></li>
-     <li><Link to='/instructors'>Instructors</Link></li>
-     <li><Link to='/classes'>Classes</Link></li>
-     <li><Link to='/dashboard'>Dashboard</Link></li>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/instructors'>Instructors</Link></li>
+        <li><Link to='/classes'>Classes</Link></li>
+        <li><Link to='/dashboard'>Dashboard</Link></li>
     </>
 
     return (
@@ -26,10 +27,14 @@ const Header = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                   {navItem}
+                    {navItem}
                 </ul>
             </div>
             <div className="navbar-end">
+                {user ? <>
+                    <img src={user.photoURL} alt="" />
+                    <li><button onClick={handleLogout}>Logout</button></li>
+                </> : ''}
                 <Link to='/login' className="btn">login</Link>
             </div>
         </div>
