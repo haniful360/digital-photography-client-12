@@ -8,11 +8,13 @@ import SignUp from "../Pages/SignUp/SignUp";
 import Classes from "../Pages/Classes/Classes";
 import Instructors from "../Pages/Instructors/Instructors";
 import Dashboard from "../layout/Dashboard";
+import ErrorPage from "../Pages/Shared/ErrorPage/ErrorPage";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <ErrorPage></ErrorPage>,
     element: <Main></Main>,
     children: [
       {
