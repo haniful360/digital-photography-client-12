@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProviders';
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
-    
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogout = () => {
+        logOut()
+            .then(result => {
+            })
+            .catch(error => { })
+    }
     const navItem = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/instructors'>Instructors</Link></li>
@@ -13,7 +18,7 @@ const Header = () => {
     </>
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 shadow-md mb-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -31,11 +36,12 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {user ? <>
-                    <img src={user.photoURL} alt="" />
-                    <li><button onClick={handleLogout}>Logout</button></li>
-                </> : ''}
-                <Link to='/login' className="btn">login</Link>
+                {user ? <div className='flex  gap-3'>
+                    <button className='btn capitalize' onClick={handleLogout}>Logout</button>
+                    <img className='w-10 h-10 ring ring-green-500 rounded-full' src={user?.photoURL} alt="user" />
+                </div> : <Link to='/login' className="btn capitalize tracking-wider">Login</Link>
+                }
+
             </div>
         </div>
     );

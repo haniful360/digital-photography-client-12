@@ -6,7 +6,7 @@ import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 const SignUp = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [show, setShow] = useState(false);
     const [confirmShow, setConfirmShow] = useState(false);
@@ -22,7 +22,7 @@ const SignUp = () => {
                 // setError(err.message)
             })
 
-        if(data.password !== data.confirmPassword){
+        if (data.password !== data.confirmPassword) {
             return setError("Your password is don't match")
         }
 
@@ -54,12 +54,12 @@ const SignUp = () => {
                         </div>
                         <div className="relative">
                             <input className="p-2 rounded-xl border w-full" type={confirmShow ? 'text' : 'password'}  {...register("confirmPassword", { required: true, maxLength: 20, minLength: 6 })} name="confirmPassword" placeholder="ConfirmPassword" />
-                            {errors.confirmPassword?.type ==='required' && <span className='text-red-400'>confirmPassword field is required</span>}
+                            {errors.confirmPassword?.type === 'required' && <span className='text-red-400'>confirmPassword field is required</span>}
                             {errors.confirmPassword?.type === 'minLength' && <p className='text-red-400'>password must be 6 characters</p>}
                             <p className='right-2 absolute top-3' onClick={() => setConfirmShow(!confirmShow)}>{confirmShow ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}</p>
                             <span className='text-red-400'>{error}</span>
                         </div>
-                       
+
                         <button className="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">SignUp</button>
                     </form>
                     {/* or */}
