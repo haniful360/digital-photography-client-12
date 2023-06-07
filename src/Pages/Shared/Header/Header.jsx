@@ -8,7 +8,7 @@ const Header = () => {
         logOut()
             .then(result => {
             })
-            .catch(error => { })
+            .catch(error => {})
     }
     const navItem = <>
         <li><Link to='/'>Home</Link></li>
@@ -18,7 +18,7 @@ const Header = () => {
     </>
 
     return (
-        <div className="navbar bg-base-100 shadow-md mb-10">
+        <div className="navbar fixed bg-opacity-30 bg-black z-10 shadow-md">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -38,7 +38,7 @@ const Header = () => {
             <div className="navbar-end">
                 {user ? <div className='flex  gap-3'>
                     <button className='btn capitalize' onClick={handleLogout}>Logout</button>
-                    <img className='w-10 h-10 ring ring-green-500 rounded-full' src={user?.photoURL} alt="user" />
+                    <img className='w-10 h-10 ring ring-green-500 rounded-full' src={user.photoURL} alt="user" />
                 </div> : <Link to='/login' className="btn capitalize tracking-wider">Login</Link>
                 }
 

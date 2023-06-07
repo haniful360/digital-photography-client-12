@@ -1,32 +1,62 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [show, setShow] = useState(false);
     const [confirmShow, setConfirmShow] = useState(false);
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const navigate = useNavigate();
     const onSubmit = data => {
+
         console.log(data);
+        if (data.password !== data.confirmPassword) {
+            setError("Your password is don't match");
+            return;
+        }
         createUser(data.email, data.password)
+
             .then(result => {
                 console.log(result.user);
+                updateUserProfile(data.name, data.photoURL)
+                    .then(() => {
+                        const saveUser = {name:data.name, email:data.email}
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log(data);
+                                if (data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        title: 'Success!',
+                                        text: 'successfully user create',
+                                        icon: 'success',
+                                        confirmButtonText: 'Cool'
+                                    })
+                                    navigate('/')
+                                }
+                            })
+
+                    })
+
             })
             .catch(err => {
                 console.log(err);
                 // setError(err.message)
             })
-
-        if (data.password !== data.confirmPassword) {
-            return setError("Your password is don't match")
-        }
-
     }
 
     return (
