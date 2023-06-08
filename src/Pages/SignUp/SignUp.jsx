@@ -28,7 +28,7 @@ const SignUp = () => {
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         const saveUser = {name:data.name, email:data.email}
-                        fetch('http://localhost:5000/users', {
+                        fetch('http://localhost:5000/students', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -40,12 +40,7 @@ const SignUp = () => {
                                 console.log(data);
                                 if (data.insertedId) {
                                     reset();
-                                    Swal.fire({
-                                        title: 'Success!',
-                                        text: 'successfully user create',
-                                        icon: 'success',
-                                        confirmButtonText: 'Cool'
-                                    })
+                                    Swal.fire('User create Successfull')
                                     navigate('/')
                                 }
                             })

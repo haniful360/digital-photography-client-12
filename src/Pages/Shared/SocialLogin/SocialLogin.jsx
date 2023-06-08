@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProviders';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const SocialLogin = () => {
     const { googleSignIn } = useContext(AuthContext);
@@ -9,11 +10,28 @@ const SocialLogin = () => {
     let from = location.state?.from?.pathname || "/";
     const handleGoogleSign = () => {
         googleSignIn()
-            .then(result => { 
-                console.log(result.user)
-                navigate(from, { replace: true });
+            .then(result => {
+                const loogedUser = result.user;
+                console.log(loogedUser);
+                const saveUser = { name: loogedUser.displayName, email: loogedUser.email }
+                fetch('http://localhost:5000/students', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        // if (data.insertedId) {
+                            Swal.fire('Login SuccessFull')
+                        // }
+                        navigate(from, { replace: true });
+                    })
+
+                // navigate(from, { replace: true });
                 // toast('SignIn successfull')
-             })
+            })
             .catch(err => console.log(err))
     }
     return (
