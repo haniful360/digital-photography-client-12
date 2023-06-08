@@ -1,7 +1,11 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
+import { FaUsers } from 'react-icons/fa';
+import { AuthContext } from '../providers/AuthProviders';
 
 const Dashboard = () => {
+    // const {user} = useState(AuthContext);
+    
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -12,11 +16,27 @@ const Dashboard = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                    {/* Sidebar content here */}
-                    <li><a>Sidebar Item 1</a></li>
-                    <li><a>Sidebar Item 2</a></li>
-                </ul>
+                <ul className="menu p-4 h-full w-80 text-base-content bg-[#134ba5cb]">
+
+                        
+                        {isAdmin ? <>
+                            <li><NavLink to='/'><h2 className='text-3xl'>Photography</h2></NavLink></li>
+
+
+                            
+                            <li><NavLink to='/dashboard/manageUsers'>Manage users</NavLink></li>
+                            <li><NavLink to='/dashboard/manageClasses'>Manage Classes</NavLink></li>
+                        </> : <>
+
+                            <li><NavLink to='/'><h2 className='text-3xl'> Photography</h2></NavLink></li>
+
+                            <li><NavLink to='/dashboard/enrolledClasses'>My Enrolled Classes</NavLink></li>
+                            <li><NavLink to='/dashboard/selectedClasses'>My selected Classes</NavLink></li>
+                            
+                        </>
+                        }
+                        
+                    </ul>
 
             </div>
         </div>

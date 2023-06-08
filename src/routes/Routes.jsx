@@ -11,6 +11,10 @@ import Dashboard from "../layout/Dashboard";
 import ErrorPage from "../Pages/Shared/ErrorPage/ErrorPage";
 import Banner from "../Pages/Home/Banner/Banner";
 import PrivateRoute from "./PrivateRoute";
+import ManageUsers from "../Pages/DashBoard/Admin/ManageUsers";
+import ManagesClasses from "../Pages/DashBoard/Admin/ManagesClasses";
+import MyEnrolledClass from "../Pages/DashBoard/Students/MyEnrolledClass";
+import MySelectedClass from "../Pages/DashBoard/Students/MySelectedClass";
 
 
 const router = createBrowserRouter([
@@ -46,9 +50,21 @@ const router = createBrowserRouter([
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children:[
       {
-        path:'',
-        // element:
-      }
+        path:'manageUsers',
+        element:<ManageUsers></ManageUsers>
+      },
+      {
+        path:'manageClasses',
+        element:<ManagesClasses></ManagesClasses>
+      },
+      {
+        path:'enrolledClasses',
+        element:<MyEnrolledClass></MyEnrolledClass>
+      },
+      {
+        path:'selectedClasses',
+        element:<MySelectedClass></MySelectedClass>
+      },
     ]
   }
 ]);

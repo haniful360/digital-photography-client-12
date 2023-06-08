@@ -14,7 +14,7 @@ const SocialLogin = () => {
                 const loogedUser = result.user;
                 console.log(loogedUser);
                 const saveUser = { name: loogedUser.displayName, email: loogedUser.email }
-                fetch('http://localhost:5000/students', {
+                fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -23,9 +23,9 @@ const SocialLogin = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        // if (data.insertedId) {
+                        if (data.insertedId) {
                             Swal.fire('Login SuccessFull')
-                        // }
+                        }
                         navigate(from, { replace: true });
                     })
 

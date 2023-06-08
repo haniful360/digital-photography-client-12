@@ -65,7 +65,7 @@ const Header = () => {
                 </label>
                 {user ? <div className='flex  gap-3'>
                     <button className='btn capitalize' onClick={handleLogout}>Logout</button>
-                    <img className='w-10 h-10 ring ring-green-500 rounded-full' src={user.photoURL} alt="user" />
+                    <img className='w-10 h-10 ring ring-green-500 rounded-full' src={user?.photoURL} alt="user" />
                 </div> : <Link to='/login' className="btn bg-gray-400 capitalize tracking-wider">Login</Link>
                 }
 
