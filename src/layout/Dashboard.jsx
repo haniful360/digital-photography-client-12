@@ -8,9 +8,9 @@ import useAdmin from '../hooks/useAdmin';
 const Dashboard = () => {
     // const {user} = useContext(AuthContext);
     // console.log(user.role);
-    const {isAdmin} = useAdmin();
-    const isInstructor = true;
-    // console.log(isAdmin);
+    const [isAdmin] = useAdmin();
+    const isInstructor = false;
+    console.log(isAdmin);
 
     return (
         <div className="drawer lg:drawer-open">
