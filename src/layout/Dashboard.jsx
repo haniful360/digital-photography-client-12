@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { FaUsers } from 'react-icons/fa';
-import { AuthContext } from '../providers/AuthProviders';
 import useAdmin from '../hooks/useAdmin';
+// import { FaUsers } from 'react-icons/fa';
+// import { AuthContext } from '../providers/AuthProviders';
+// import useAdmin from '../hooks/useAdmin';
 
 const Dashboard = () => {
     // const {user} = useContext(AuthContext);
     // console.log(user.role);
-    const isAdmin = false;
-    const isInstructor = false;
+    const {isAdmin} = useAdmin();
+    const isInstructor = true;
     // console.log(isAdmin);
 
     return (

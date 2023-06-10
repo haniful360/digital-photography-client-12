@@ -12,6 +12,6 @@ const useAdmin = () => {
             return res.json();
         }
     })
-    return [isAdmin, isAdminLoading]
+    return [isAdmin, isAdminLoading];
 }
 export default useAdmin;
