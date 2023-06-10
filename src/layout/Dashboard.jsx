@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import useAdmin from '../hooks/useAdmin';
+import useInstructor from '../hooks/useInstructor';
 // import { FaUsers } from 'react-icons/fa';
 // import { AuthContext } from '../providers/AuthProviders';
 // import useAdmin from '../hooks/useAdmin';
@@ -9,8 +10,9 @@ const Dashboard = () => {
     // const {user} = useContext(AuthContext);
     // console.log(user.role);
     const [isAdmin] = useAdmin();
-    const isInstructor = false;
-    console.log(isAdmin);
+    const [isInstructor] = useInstructor();
+    // console.log(isAdmin);
+    console.log('isInstructor',isInstructor);
 
     return (
         <div className="drawer lg:drawer-open">

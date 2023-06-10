@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 // import useAuth from '../../../hooks/useAuth';
 import { AuthContext } from '../../../providers/AuthProviders';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const img_hoisting_token = import.meta.env.VITE_img_upload_token;
 
@@ -27,12 +28,20 @@ const AddClass = () => {
                 if (imgResponse.success) {
                     const imgURL = imgResponse.data.display_url
                     // console.log(imgURL);
-                    const { name, instructorEmail, instructorName, price, seat } = data;
-                    const newItem = { name, instructorEmail, instructorName, price: parseFloat(price), seat: parseFloat(seat), image: imgURL, status:'pending' }
+                    const { name, email, instructorName, price, seat } = data;
+                    const newItem = { name, email, instructorName, price: parseFloat(price), seat: parseInt(seat), image: imgURL, status:'pending' }
                     console.log(newItem);
                     axiosSecure.post('/addClass', newItem)
                     .then(data =>{
-                        console.log('new class', data.data);
+                        if(data.data.insertedId){
+                            reset();
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'SuccessFully Added',
+                                icon: 'success',
+                                confirmButtonText: 'Cool'
+                              })
+                        }
                     })
                 }
             })
@@ -62,8 +71,8 @@ const AddClass = () => {
                     <label className="label">
                         <span className="label-text font-semibold">Instructor Email*</span>
                     </label>
-                    <input type="text" name='instructorEmail' defaultValue={user?.email} placeholder="Instructor Email"
-                        {...register("instructorEmail", { required: true, maxLength: 120 })}
+                    <input type="text" name='email' defaultValue={user?.email} placeholder="Instructor Email"
+                        {...register("email", { required: true, maxLength: 120 })}
                         className="input input-bordered w-full " readOnly />
                 </div>
                 <div className="flex gap-4">
