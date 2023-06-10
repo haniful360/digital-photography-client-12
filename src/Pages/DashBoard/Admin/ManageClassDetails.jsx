@@ -1,7 +1,7 @@
 import React from 'react';
 
-const MyClassDetails = ({singleClass}) => {
-    const {name, email, image, instructorName,price, seat, status} = singleClass;
+const ManageClassDetails = ({ manageClass }) => {
+    const { name, image, email, instructorName, price, seat, status } = manageClass;
     return (
         <tr>
             <td>
@@ -23,10 +23,15 @@ const MyClassDetails = ({singleClass}) => {
            
             <td>${price}</td>
             <th>
-            <button className="btn btn-info btn-sm capitalize w-20">{status}</button>
+                <button className="btn btn-ghost btn-xs">{status}</button>
+            </th>
+            <th>
+                <button className="btn btn-info btn-sm capitalize w-20">Approved</button>
+                <button className="btn btn-info btn-sm capitalize my-2 w-20">Denied</button>
+                <button className="btn btn-info btn-sm capitalize w-20">Feedback</button>
             </th>
         </tr>
     );
 };
 
-export default MyClassDetails;
+export default ManageClassDetails;
