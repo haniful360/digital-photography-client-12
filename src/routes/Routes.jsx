@@ -19,6 +19,7 @@ import MyClass from "../Pages/DashBoard/Instructors/MyClass";
 import UpdateClass from "../Pages/DashBoard/Instructors/UpdateClass";
 import Payment from "../Pages/DashBoard/Payment/Payment";
 import PaymentHistory from "../Pages/DashBoard/Students/PaymentHistory";
+import FeedBack from "../Pages/DashBoard/Admin/FeedBack";
 
 
 const router = createBrowserRouter([
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: 'manageClasses',
         element: <ManagesClasses></ManagesClasses>
+      },
+      {
+        path: 'feedback/:id',
+        element: <FeedBack></FeedBack>
       },
       {
         path: 'addClass',

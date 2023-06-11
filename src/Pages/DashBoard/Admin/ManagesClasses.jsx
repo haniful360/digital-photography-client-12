@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import ManageClassDetails from './ManageClassDetails';
+import { useQuery } from 'react-query';
 
 const ManagesClasses = () => {
-    const [manageClasses, setManageClasses] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/addClass')
-            .then(res => res.json())
-            .then(data => setManageClasses(data))
-    }, [])
+    // const [manageClasses, setManageClasses] = useState([]);
+    const { data: addClass = [], refetch } = useQuery(['users'], async () => {
+        const res = await fetch('http://localhost:5000/addClass')
+        return res.json();
+    })
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/addClass')
+    //         .then(res => res.json())
+    //         .then(data => setManageClasses(data))
+    // }, [])
     return (
         <div className='w-full lg:px-4'>
-            <h3 className='text-3xl text-center my-4'>manage classes:{manageClasses.length}</h3>
+            <h3 className='text-3xl text-center my-4'>manage classes:{addClass.length}</h3>
             <div className="overflow-x-auto ">
                 <table className="table">
                     {/* head */}
                     <thead>
                         <tr>
+                            <th>Images</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>A.Seats</th>
@@ -24,8 +30,9 @@ const ManagesClasses = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {manageClasses.map(manageClass => <ManageClassDetails key={manageClass._id}
+                        {addClass.map(manageClass => <ManageClassDetails key={manageClass._id}
                             manageClass={manageClass}
+                            refetch={refetch}
                         ></ManageClassDetails>)}
 
                     </tbody>

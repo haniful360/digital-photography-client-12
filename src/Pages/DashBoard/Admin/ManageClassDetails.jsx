@@ -1,14 +1,20 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import { Link } from 'react-router-dom';
 
-const ManageClassDetails = ({ manageClass }) => {
-    const { name, image, email, instructorName, price, seat, status } = manageClass;
-    const { data: addClass = [], refetch } = useQuery(['addClass'], async () => {
-        const res = await fetch('http://localhost:5000/addClass')
-        return res.json();
-    })
-    const handleApproved = () => {
+const ManageClassDetails = ({ manageClass, refetch }) => {
 
+    const { _id, name, image, email, instructorName, price, seat, status } = manageClass;
+
+    const handleApproved = (manageClass) => {
+        fetch(`http://localhost:5000/addClass/approved/${manageClass._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                refetch();
+                console.log(data);
+            })
     }
     return (
         <tr>
@@ -31,9 +37,11 @@ const ManageClassDetails = ({ manageClass }) => {
 
             <td>${price}</td>
             <th>
-                {manageClass.status === "pending" ? 'disabled' : <button onClick={() => handleApproved(manageClass)} className="btn btn-info btn-sm capitalize w-20">Approved</button>}
+                {status === 'pending' ? <button onClick={() => handleApproved(manageClass)} className="btn btn-info btn-sm capitalize w-20">Approved</button> : 'Approve'}
                 <button className="btn btn-info btn-sm capitalize my-2 w-20">Denied</button>
-                <button className="btn btn-info btn-sm capitalize w-20">Feedback</button>
+                <Link to={`/dashboard/feedback/${_id}`}>
+                    <button className="btn btn-info btn-sm capitalize w-20">Feedback</button>
+                </Link>
             </th>
         </tr>
     );

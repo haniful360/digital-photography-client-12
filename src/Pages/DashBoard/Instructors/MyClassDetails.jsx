@@ -37,7 +37,7 @@ const MyClassDetails = ({singleClass}) => {
             
             <button className="btn border-0 mt-2 bg-red-600 px-2 w-9 h-9 rounded-full btn-sm capitalize"><FcFeedback className='w-5 h-5 text-white'></FcFeedback></button>
             </th>
-            {/* <Link to={`/updateClass/${_id}`}><button>xxx</button></Link> */}
+            
         </tr>
     );
 };
