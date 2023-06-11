@@ -7,8 +7,7 @@ import useInstructor from '../hooks/useInstructor';
 // import useAdmin from '../hooks/useAdmin';
 
 const Dashboard = () => {
-    // const {user} = useContext(AuthContext);
-    // console.log(user.role);
+
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
     // console.log('isAdmin',isAdmin);
@@ -17,7 +16,7 @@ const Dashboard = () => {
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col items-center justify-center">
+            <div className="drawer-content flex flex-col justify-center">
                 {/* Page content here */}
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
                 <Outlet></Outlet>
@@ -40,6 +39,7 @@ const Dashboard = () => {
 
                         <li><NavLink to='/dashboard/selectedClasses'> Selected Classes</NavLink></li>
                         <li><NavLink to='/dashboard/enrolledClasses'>Enrolled Classes</NavLink></li>
+                        <li><NavLink to='/dashboard/paymentHistory'>Payment History</NavLink></li>
                         
                         </>}
                         

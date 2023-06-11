@@ -20,7 +20,6 @@ const ManagesClasses = () => {
                             <th>Email</th>
                             <th>A.Seats</th>
                             <th>Price</th>
-                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>

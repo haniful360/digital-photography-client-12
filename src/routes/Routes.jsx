@@ -17,6 +17,8 @@ import MySelectedClass from "../Pages/DashBoard/Students/MySelectedClass";
 import AddClass from "../Pages/DashBoard/Instructors/AddClass";
 import MyClass from "../Pages/DashBoard/Instructors/MyClass";
 import UpdateClass from "../Pages/DashBoard/Instructors/UpdateClass";
+import Payment from "../Pages/DashBoard/Payment/Payment";
+import PaymentHistory from "../Pages/DashBoard/Students/PaymentHistory";
 
 
 const router = createBrowserRouter([
@@ -50,35 +52,44 @@ const router = createBrowserRouter([
   {
     path: 'dashboard',
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-    children:[
+    children: [
       {
-        path:'manageUsers',
-        element:<ManageUsers></ManageUsers>
+        path: 'manageUsers',
+        element: <ManageUsers></ManageUsers>
       },
       {
-        path:'manageClasses',
-        element:<ManagesClasses></ManagesClasses>
+        path: 'manageClasses',
+        element: <ManagesClasses></ManagesClasses>
       },
       {
-        path:'addClass',
-        element:<AddClass></AddClass>
+        path: 'addClass',
+        element: <AddClass></AddClass>
       },
       {
-        path:'myClass',
-        element:<MyClass></MyClass>
+        path: 'myClass',
+        element: <MyClass></MyClass>
       },
       {
-        path:'updateClass/:id',
-        element:<UpdateClass></UpdateClass>,
-        loader: ({params}) => fetch(`http://localhost:5000/addClass/${params.id}`)
+        path: 'updateClass/:id',
+        element: <UpdateClass></UpdateClass>,
+        loader: ({ params }) => fetch(`http://localhost:5000/addClass/${params.id}`)
       },
       {
-        path:'enrolledClasses',
-        element:<MyEnrolledClass></MyEnrolledClass>
+        path: 'enrolledClasses',
+        element: <MyEnrolledClass></MyEnrolledClass>
       },
       {
-        path:'selectedClasses',
-        element:<MySelectedClass></MySelectedClass>
+        path: 'selectedClasses',
+        element: <MySelectedClass></MySelectedClass>
+      },
+      {
+        path: 'paymentHistory',
+        element: <PaymentHistory/>
+      },
+      {
+        path: 'payment/:id',
+        element: <Payment />,
+        loader: ({ params }) => fetch(`http://localhost:5000/selectedClass/${params.id}`)
       },
     ]
   }

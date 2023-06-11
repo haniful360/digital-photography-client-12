@@ -1,8 +1,9 @@
 import React from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const SelectedClassDetails = ({ selected }) => {
-    const { name, image, instructorName } = selected;
+    const {_id, name, image, instructorName } = selected;
     return (
         <tr>
             <td>
@@ -19,10 +20,10 @@ const SelectedClassDetails = ({ selected }) => {
             <td> {name} </td>
             <td> {instructorName} </td>
             <th>
-            <button className="btn btn-info text-white btn-sm capitalize w-20">Pay</button>
+                <Link to={`/dashboard/payment/${_id}`}><button className="btn btn-info text-white btn-sm capitalize w-20">Pay</button></Link>
             </th>
             <th>
-                <button onClick={() => handleMakeInstructor(user)} className="btn border-0 bg-blue-400 px-2 w-9 h-9 rounded-full btn-sm capitalize"><FaTrashAlt className='w-5 h-5 text-white  '></FaTrashAlt></button>
+                <button className="btn border-0 bg-blue-400 px-2 w-9 h-9 rounded-full btn-sm capitalize"><FaTrashAlt className='w-5 h-5 text-white  '></FaTrashAlt></button>
             </th>
         </tr>
     );
