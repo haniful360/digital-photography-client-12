@@ -16,6 +16,7 @@ import MyEnrolledClass from "../Pages/DashBoard/Students/MyEnrolledClass";
 import MySelectedClass from "../Pages/DashBoard/Students/MySelectedClass";
 import AddClass from "../Pages/DashBoard/Instructors/AddClass";
 import MyClass from "../Pages/DashBoard/Instructors/MyClass";
+import UpdateClass from "../Pages/DashBoard/Instructors/UpdateClass";
 
 
 const router = createBrowserRouter([
@@ -65,6 +66,11 @@ const router = createBrowserRouter([
       {
         path:'myClass',
         element:<MyClass></MyClass>
+      },
+      {
+        path:'updateClass/:id',
+        element:<UpdateClass></UpdateClass>,
+        loader: ({params}) => fetch(`http://localhost:5000/addClass/${params.id}`)
       },
       {
         path:'enrolledClasses',

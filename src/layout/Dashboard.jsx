@@ -11,8 +11,8 @@ const Dashboard = () => {
     // console.log(user.role);
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
-    // console.log(isAdmin);
-    console.log('isInstructor',isInstructor);
+    // console.log('isAdmin',isAdmin);
+    // console.log('isInstructor',isInstructor);
 
     return (
         <div className="drawer lg:drawer-open">
@@ -38,11 +38,11 @@ const Dashboard = () => {
                             <li><NavLink to='/dashboard/myClass'>My  Class</NavLink></li>
                         </> : <><li><NavLink to='/'><h2 className='text-3xl'> Photography</h2></NavLink></li>
 
-                        <li><NavLink to='/dashboard/enrolledClasses'>My Enrolled Classes</NavLink></li>
-                        <li><NavLink to='/dashboard/selectedClasses'>My selected Classes</NavLink></li></>}
-
-
-
+                        <li><NavLink to='/dashboard/selectedClasses'> Selected Classes</NavLink></li>
+                        <li><NavLink to='/dashboard/enrolledClasses'>Enrolled Classes</NavLink></li>
+                        
+                        </>}
+                        
 
                 </ul>
             </div>

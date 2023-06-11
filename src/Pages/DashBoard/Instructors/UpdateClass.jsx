@@ -1,17 +1,18 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-// import useAuth from '../../../hooks/useAuth';
-import { AuthContext } from '../../../providers/AuthProviders';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import useAuth from '../../../hooks/useAuth';
+import { useLoaderData } from 'react-router-dom';
 
 const img_hoisting_token = import.meta.env.VITE_img_upload_token;
 
-const AddClass = () => {
-    // const {user} = useAuth();
-    const { user } = useContext(AuthContext);
+const UpdateClass = () => {
+    const loadClass = useLoaderData(); 
+    console.log('loaddata',loadClass);
+    const { user } = useAuth()
     const [axiosSecure] = useAxiosSecure();
-    console.log(user.displayName);
+    // console.log(user.displayName);
     const { register, handleSubmit, reset } = useForm();
     const img_hoisting_url = `https://api.imgbb.com/1/upload?key=${img_hoisting_token}`
     const onSubmit = (data) => {
@@ -19,7 +20,7 @@ const AddClass = () => {
         const formData = new FormData();
         formData.append('image', data.image[0])
         fetch(img_hoisting_url, {
-            method: 'POST',
+            method: 'PUT',
             body: formData
         })
             .then(res => res.json())
@@ -31,7 +32,7 @@ const AddClass = () => {
                     const { name, email, instructorName, price, seat } = data;
                     const newItem = { name, email, instructorName, price: parseFloat(price), seat: parseInt(seat), image: imgURL, status:'pending' }
                     console.log(newItem);
-                    axiosSecure.post('/addClass', newItem)
+                    axiosSecure.put('/addClass', newItem)
                     .then(data =>{
                         if(data.data.insertedId){
                             reset();
@@ -48,7 +49,7 @@ const AddClass = () => {
     }
     return (
         <div className=' md:w-3/4 mx-auto'>
-            <div className="text-3xl text-center">Add Class</div>
+            <div className="text-3xl text-center">Update Class</div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full">
                     <label className="label">
@@ -106,4 +107,4 @@ const AddClass = () => {
     );
 };
 
-export default AddClass;
+export default UpdateClass

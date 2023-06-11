@@ -4,7 +4,7 @@ import SelectedClassDetails from './SelectedClassDetails';
 const MySelectedClass = () => {
     const [selectedClass, setSelectedClass] = useState([]);
     useEffect(() =>{
-        fetch(`http://localhost:5000/addClass`)
+        fetch(`http://localhost:5000/selectedClass`)
         .then(res => res.json())
         .then(data =>setSelectedClass(data))
     },[])
@@ -21,7 +21,6 @@ const MySelectedClass = () => {
                         <th>Instructor Name</th>
                         <th>Pay</th>
                         <th>Action</th>
-                        
                     </tr>
                 </thead>
                 <tbody>
