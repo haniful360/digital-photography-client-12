@@ -15,9 +15,8 @@ const Classes = () => {
     return (
         <div className='max-w-6xl mx-auto my-16'>
             <Helmet>
-                <title>photography-classes</title>
+                <title>D.Photography-Classes</title>
             </Helmet>
-            {classes.length}
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {classes.map(classItem =><ClassDetails
                 key={classItem._id}

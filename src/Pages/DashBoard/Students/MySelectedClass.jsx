@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import SelectedClassDetails from './SelectedClassDetails';
 import { Helmet } from 'react-helmet-async';
+import { useQuery } from 'react-query';
 
 const MySelectedClass = () => {
-    const [selectedClass, setSelectedClass] = useState([]);
-    useEffect(() =>{
-        fetch(`http://localhost:5000/selectedClass`)
-        .then(res => res.json())
-        .then(data =>setSelectedClass(data))
-    },[])
+    // const [selectedClass, setSelectedClass] = useState([]);
+    const { data: selectedClass = [], refetch } = useQuery(['selectedClass'], async () => {
+        const res = await fetch('http://localhost:5000/selectedClass')
+        return res.json();
+    })
+    // useEffect(() =>{
+    //     fetch(`http://localhost:5000/selectedClass`)
+    //     .then(res => res.json())
+    //     .then(data =>setSelectedClass(data))
+    // },[])
     return (
         <div>
             <Helmet>
@@ -18,7 +23,6 @@ const MySelectedClass = () => {
         <h3 className='text-3xl text-center font-semibold my-6'>My selected class</h3>
          <div className="overflow-x-auto w-full px-2">
             <table className="table">
-                {/* head */}
                 <thead>
                     <tr>
                         <th>IMG</th>
@@ -34,6 +38,7 @@ const MySelectedClass = () => {
                         selectedClass.map(selected =><SelectedClassDetails
                         key={selected._id}
                         selected={selected}
+                        refetch={refetch}
                         ></SelectedClassDetails>)
                     }
                 </tbody>

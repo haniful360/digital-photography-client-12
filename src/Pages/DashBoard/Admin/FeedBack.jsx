@@ -26,7 +26,7 @@ const FeedBack = () => {
             <h2>send feedback</h2>
             <form onSubmit={handleFeedBack}>
                 <textarea name='feedback' cols='40' rows='4' className="textarea textarea-primary" placeholder="write your feedback..."></textarea> <br />
-                <button className="btn btn-outline block mx-auto btn-accent">send feedback</button>
+                <button className="btn btn-outline block mx-auto btn-info">Send Feedback</button>
             </form>
         </div>
         </div>
