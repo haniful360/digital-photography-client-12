@@ -7,7 +7,10 @@ const Classes = () => {
     useEffect(() =>{
         fetch('http://localhost:5000/addClass')
         .then(res => res.json())
-        .then(data =>setAllClasses(data))
+        .then(data =>{
+            const approved = data.filter(approve => approve.status==='approved')
+            setAllClasses(approved)
+        })
     },[])
     return (
         <div className='max-w-6xl mx-auto my-16'>

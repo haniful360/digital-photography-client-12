@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../providers/AuthProviders';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const img_hoisting_token = import.meta.env.VITE_img_upload_token;
 
@@ -47,7 +48,11 @@ const AddClass = () => {
             })
     }
     return (
-        <div className=' md:w-3/4 mx-auto'>
+        <div>
+            <Helmet>
+                <title>-AddClass</title>
+            </Helmet>
+            <div className=' md:w-3/4 mx-auto'>
             <div className="text-3xl text-center">Add Class</div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full">
@@ -102,6 +107,7 @@ const AddClass = () => {
                 </div>
                 <input className="btn btn-sm my-4" type="submit" value="Add Item" />
             </form>
+        </div>
         </div>
     );
 };

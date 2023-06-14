@@ -64,7 +64,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'feedback/:id',
-        element: <FeedBack></FeedBack>
+        element: <FeedBack></FeedBack>,
+        loader: ({ params }) => fetch(`http://localhost:5000/addClass/${params.id}`)
       },
       {
         path: 'addClass',
@@ -89,7 +90,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'paymentHistory',
-        element: <PaymentHistory/>
+        element: <PaymentHistory />
       },
       {
         path: 'payment/:id',

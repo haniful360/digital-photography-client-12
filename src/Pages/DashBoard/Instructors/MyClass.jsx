@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import MyClassDetails from './MyClassDetails';
+import { Helmet } from 'react-helmet-async';
 
 const MyClass = () => {
     const { user } = useAuth();
@@ -12,6 +13,9 @@ const MyClass = () => {
     }, []);
     return (
        <div>
+        <Helmet>
+                <title>-MyClass</title>
+            </Helmet>
         <h3 className='text-3xl text-center font-semibold my-6'>My class</h3>
          <div className="overflow-x-auto w-full px-2">
             <table className="table">

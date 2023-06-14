@@ -4,32 +4,49 @@ import useInstructor from '../../hooks/useInstructor';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 // import axios from 'axios';
 
 const ClassDetails = ({ classItem }) => {
     const { user } = useAuth();
-    // if(user){
+    const navigate = useNavigate();
 
-    // }
+
     const [disabled, setDisabled] = useState(false);
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
     const { name, instructorName, seat, price, image } = classItem;
     const handleSelect = (classItem) => {
-        delete classItem._id
-        axios.post(`http://localhost:5000/selectedClass`, classItem)
-            .then(data => {
-                console.log(data.data);
-                if (data.data.insertedId) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Successfully Select the course',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                    })
+        if (user) {
+            delete classItem._id
+            axios.post(`http://localhost:5000/selectedClass`, classItem)
+                .then(data => {
+                    console.log(data.data);
+                    if (data.data.insertedId) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Successfully Select the course',
+                            icon: 'success',
+                            confirmButtonText: 'Cool'
+                        })
+                    }
+                    setDisabled(true)
+                })
+        }
+        else {
+            Swal.fire({
+                title: 'Please login to Select Class',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login now!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', { state: { from: location } })
                 }
-                setDisabled(true)
             })
+        }
     }
     return (
         <div className="card bg-base-100 shadow-md">
@@ -40,7 +57,7 @@ const ClassDetails = ({ classItem }) => {
                 <p>Available seats:{seat}</p>
                 <p>price:${price}</p>
                 <div className="card-actions justify-end">
-                    {isAdmin && isInstructor ? <button disabled className="btn btn-info btn-md capitalize text-white tracking-wider">Select</button> : <button onClick={() => handleSelect(classItem)} disabled={disabled} className="btn btn-info btn-md capitalize text-white tracking-wider">Select</button>}
+                    {!isAdmin && !isInstructor ? <button onClick={() => handleSelect(classItem)} disabled={disabled}  className="btn btn-info btn-md capitalize text-white tracking-wider">Select</button> : <button disabled className="btn btn-info btn-md capitalize text-white tracking-wider">Select</button>}
                 </div>
             </div>
         </div>

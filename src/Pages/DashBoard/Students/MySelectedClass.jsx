@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SelectedClassDetails from './SelectedClassDetails';
+import { Helmet } from 'react-helmet-async';
 
 const MySelectedClass = () => {
     const [selectedClass, setSelectedClass] = useState([]);
@@ -9,7 +10,11 @@ const MySelectedClass = () => {
         .then(data =>setSelectedClass(data))
     },[])
     return (
-        <div className='w-full lg:px-4'>
+        <div>
+            <Helmet>
+                <title>-EnrolledClass</title>
+            </Helmet>
+            <div className='w-full lg:px-4'>
         <h3 className='text-3xl text-center font-semibold my-6'>My selected class</h3>
          <div className="overflow-x-auto w-full px-2">
             <table className="table">
@@ -35,6 +40,7 @@ const MySelectedClass = () => {
             </table>
         </div>
        </div>
+        </div>
     );
 };
 

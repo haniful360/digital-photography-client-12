@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ManageClassDetails from './ManageClassDetails';
 import { useQuery } from 'react-query';
+import { Helmet } from 'react-helmet-async';
 
 const ManagesClasses = () => {
     // const [manageClasses, setManageClasses] = useState([]);
@@ -14,7 +15,11 @@ const ManagesClasses = () => {
     //         .then(data => setManageClasses(data))
     // }, [])
     return (
-        <div className='w-full lg:px-4'>
+       <div>
+        <Helmet>
+                <title>-ManageClasses</title>
+            </Helmet>
+         <div className='w-full lg:px-4'>
             <h3 className='text-3xl text-center my-4'>manage classes:{addClass.length}</h3>
             <div className="overflow-x-auto ">
                 <table className="table">
@@ -42,6 +47,7 @@ const ManagesClasses = () => {
                 </table>
             </div>
         </div>
+       </div>
     );
 };
 

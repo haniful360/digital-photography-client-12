@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const ManageClassDetails = ({ manageClass, refetch }) => {
+    const [isApproved, setIsApproved] = useState(false);
+    const [isDenied, setIsDenied] = useState(false);
 
     const { _id, name, image, email, instructorName, price, seat, status } = manageClass;
 
@@ -12,8 +15,26 @@ const ManageClassDetails = ({ manageClass, refetch }) => {
         })
             .then(res => res.json())
             .then(data => {
-                refetch();
                 console.log(data);
+                if (data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire('Approved this course')
+                }
+                setIsApproved(true)
+            })
+    }
+    const handleDenied = (manageClass) => {
+        fetch(`http://localhost:5000/addClass/denied/${manageClass._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire('Denied This Class')
+                }
+                setIsDenied(true)
             })
     }
     return (
@@ -37,8 +58,10 @@ const ManageClassDetails = ({ manageClass, refetch }) => {
 
             <td>${price}</td>
             <th>
-                {status === 'pending' ? <button onClick={() => handleApproved(manageClass)} className="btn btn-info btn-sm capitalize w-20">Approved</button> : 'Approve'}
-                <button className="btn btn-info btn-sm capitalize my-2 w-20">Denied</button>
+                {status  ? <button onClick={() => handleApproved(manageClass)} disabled={isDenied} className="btn btn-info btn-sm capitalize w-20">Approved</button> : 'Approve'} <br />
+
+               {status ? <button onClick={() => handleDenied(manageClass)} disabled={isApproved} className="btn btn-info btn-sm capitalize w-20">Denied</button>:''}<br />
+
                 <Link to={`/dashboard/feedback/${_id}`}>
                     <button className="btn btn-info btn-sm capitalize w-20">Feedback</button>
                 </Link>
