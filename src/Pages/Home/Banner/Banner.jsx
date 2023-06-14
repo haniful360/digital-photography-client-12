@@ -49,9 +49,7 @@ export default function App() {
         <SwiperSlide>
             <img src="https://i.ibb.co/F6Z12Nj/Grey-Minimalist-Flash-Sale-Facebook-AD.png" alt="" />
         </SwiperSlide>
-        {/* <SwiperSlide>
-        <img src="https://i.ibb.co/bPdTNNh/Black-Simple-New-Digital-Camera-Review-Youtube-Thumbnail.png" alt="" />
-        </SwiperSlide> */}
+        
         <div className="autoplay-progress" slot="container-end">
           <svg viewBox="0 0 48 48" ref={progressCircle}>
             <circle cx="24" cy="24" r="20"></circle>

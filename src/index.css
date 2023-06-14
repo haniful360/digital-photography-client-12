@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+li{
+  list-style-type: none;
+  font-size: 20px;
+}
+.popular-instructor h1,
+.popular-classes h1{
+    font-size: 32px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    color: #213b52;
+  }
+  
+  /* .shop-categories h2::before, */
+  .popular-instructor h1::before,
+  .popular-classes h1::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+  }
+  
+  .popular-instructor h1::after,
+  .popular-classes h1::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #105397;
+    bottom: 0;
+    left: calc(50% - 20px);
+  }
+  

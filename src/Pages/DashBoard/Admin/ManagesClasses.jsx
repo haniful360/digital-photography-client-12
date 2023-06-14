@@ -4,27 +4,22 @@ import { useQuery } from 'react-query';
 import { Helmet } from 'react-helmet-async';
 
 const ManagesClasses = () => {
-    // const [manageClasses, setManageClasses] = useState([]);
+
     const { data: addClass = [], refetch } = useQuery(['users'], async () => {
         const res = await fetch('http://localhost:5000/addClass')
         return res.json();
     })
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/addClass')
-    //         .then(res => res.json())
-    //         .then(data => setManageClasses(data))
-    // }, [])
     return (
        <div>
         <Helmet>
                 <title>-ManageClasses</title>
             </Helmet>
          <div className='w-full lg:px-4'>
-            <h3 className='text-3xl text-center my-4'>manage classes:{addClass.length}</h3>
+            <h3 className='text-3xl text-center my-8'>Manage classes</h3>
             <div className="overflow-x-auto ">
                 <table className="table">
                     {/* head */}
-                    <thead>
+                    <thead className='shadow bg-base-200 '>
                         <tr>
                             <th>Images</th>
                             <th>Name</th>
@@ -39,11 +34,7 @@ const ManagesClasses = () => {
                             manageClass={manageClass}
                             refetch={refetch}
                         ></ManageClassDetails>)}
-
                     </tbody>
-
-
-
                 </table>
             </div>
         </div>

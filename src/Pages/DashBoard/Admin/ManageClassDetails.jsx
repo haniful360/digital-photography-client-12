@@ -60,7 +60,7 @@ const ManageClassDetails = ({ manageClass, refetch }) => {
             <th>
                 {status  ? <button onClick={() => handleApproved(manageClass)} disabled={isDenied} className="btn btn-info btn-sm capitalize w-20">Approved</button> : 'Approve'} <br />
 
-               {status ? <button onClick={() => handleDenied(manageClass)} disabled={isApproved} className="btn btn-info btn-sm capitalize w-20">Denied</button>:''}<br />
+               {status ? <button onClick={() => handleDenied(manageClass)} disabled={isApproved} className="btn btn-info btn-sm capitalize my-2  w-20">Denied</button>:''}<br />
 
                 <Link to={`/dashboard/feedback/${_id}`}>
                     <button className="btn btn-info btn-sm capitalize w-20">Feedback</button>

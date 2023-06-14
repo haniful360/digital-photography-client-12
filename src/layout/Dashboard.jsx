@@ -5,11 +5,11 @@ import useInstructor from '../hooks/useInstructor';
 import Header from '../Pages/Shared/Header/Header';
 import Footer from '../Pages/Shared/Footer/Footer';
 import { Helmet } from 'react-helmet-async';
-import { FaHistory, FaHome, FaWallet } from 'react-icons/fa';
+import { FaEnvelopeOpenText, FaHistory, FaHome, FaWallet } from 'react-icons/fa';
 import { GiTeacher } from 'react-icons/gi';
 import { SiGoogleclassroom } from 'react-icons/si';
 import { BiSelectMultiple } from 'react-icons/bi';
-import { AiFillFileAdd } from 'react-icons/ai';
+import { AiFillFileAdd, AiOutlineUserAdd } from 'react-icons/ai';
 import { MdClass, MdManageAccounts } from 'react-icons/md';
 import { motion } from "framer-motion"
 
@@ -38,25 +38,24 @@ const Dashboard = () => {
 
 
 
-                        {isAdmin ? <><li><NavLink to='/'><h2 className='text-3xl'>Photography</h2></NavLink></li>
-                            <motion.li
+                    <motion.li
                                 initial={{ scale: 0 }}
                                 animate={{ scale: 1 }}
                                 transition={{ duration: 0.5 }}
                             >
+                                {isAdmin ? <><li><NavLink to='/'><h2 className='text-3xl'>Photography</h2></NavLink></li>
+                            
+                            <li><NavLink to='/dashboard/manageUsers'><MdManageAccounts />Manage users </NavLink></li>
+                                <li><NavLink to='/dashboard/manageClasses'><MdClass />Manage Classes</NavLink></li>
+                        </> : isInstructor ? <>
+                            <li><NavLink to='/'><h2 className='text-3xl'> Photography</h2></NavLink></li>
 
-                                <li><NavLink to='/dashboard/manageUsers'><MdManageAccounts />Manage users </NavLink></li>
-                            </motion.li>
-
-                            <li><NavLink to='/dashboard/manageClasses'><MdClass />Manage Classes</NavLink></li></> : isInstructor ? <>
-                                <li><NavLink to='/'><h2 className='text-3xl'> Photography</h2></NavLink></li>
-
-                                <li><NavLink to='/dashboard/addClass'><AiFillFileAdd></AiFillFileAdd>Add a Class</NavLink></li>
-                                <li><NavLink to='/dashboard/myClass'>My  Class</NavLink></li>
-                            </> : <><li><NavLink to='/'><h2 className='text-3xl'> Photography</h2></NavLink></li>
+                            <li><NavLink to='/dashboard/addClass'><AiFillFileAdd></AiFillFileAdd>Add a Class</NavLink></li>
+                            <li><NavLink to='/dashboard/myClass'><FaEnvelopeOpenText></FaEnvelopeOpenText>My  Class</NavLink></li>
+                        </> : <><li><NavLink to='/'><h2 className='text-3xl'> Photography</h2></NavLink></li>
 
                             <li><NavLink to='/dashboard/selectedClasses'> <BiSelectMultiple></BiSelectMultiple>Selected Classes</NavLink></li>
-                            <li><NavLink to='/dashboard/enrolledClasses'>Enrolled Classes</NavLink></li>
+                            <li><NavLink to='/dashboard/enrolledClasses'><AiOutlineUserAdd></AiOutlineUserAdd>Enrolled Classes</NavLink></li>
                             <li><NavLink to='/dashboard/paymentHistory'><FaHistory></FaHistory>Payment History</NavLink></li>
 
                         </>}
@@ -64,7 +63,8 @@ const Dashboard = () => {
                         <div className='divider'></div>
                         <li><NavLink to='/'> <FaHome /> Home</NavLink></li>
                         <li><NavLink to='/instructors'><GiTeacher></GiTeacher>Instructor</NavLink></li>
-                        <li><NavLink to='/classes'><SiGoogleclassroom /> Classes</NavLink></li>
+                        <li><NavLink to='/classes'><SiGoogleclassroom /> Classes</NavLink></li> 
+                            </motion.li>
                     </ul>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PopularClassDetails from './PopularClassDetails';
+import './PopularClasses.css'
 
 const PopularClasses = () => {
     const [popularClasses, setPopularClasses] = useState([]);
@@ -9,11 +10,11 @@ const PopularClasses = () => {
             .then(data => setPopularClasses(data))
     }, [])
     return (
-        <div>
-            <h1>popular classes:{popularClasses.length}</h1>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+        <div className='popular-classes my-12'>
+            <h1 className='text-center'>popular classes</h1>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {
-                    popularClasses.map(popularClass => <PopularClassDetails key={popularClass._id}
+                    popularClasses.slice(0.6).map(popularClass => <PopularClassDetails key={popularClass._id}
                         popularClass={popularClass}
                     ></PopularClassDetails>)
                 }

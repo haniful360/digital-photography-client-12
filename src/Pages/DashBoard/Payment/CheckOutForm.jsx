@@ -72,7 +72,8 @@ const CheckOutForm = ({ price }) => {
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 price,
-                // photo: user?.photoURL,
+                photo: user?.photoURL,
+                status:'Paid',
                 date: new Date()
             }
             axiosSecure.post('/payments', payment)

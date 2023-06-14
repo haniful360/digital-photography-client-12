@@ -59,11 +59,10 @@ const ManageUsers = () => {
             </Helmet>
             <div className='md:w-5/6 mx-auto'>
 
-                <h3 className="text-3xl font-semibold">Manage User: {users.length}</h3>
+                <h3 className="text-3xl font-semibold my-8 text-center">Manage User</h3>
                 <div className="overflow-x-auto">
                     <table className="table">
-
-                        <thead>
+                        <thead className='shadow bg-base-200'>
                             <tr>
                                 <th>sl.n</th>
                                 <th>Name</th>

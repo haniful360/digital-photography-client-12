@@ -13,14 +13,14 @@ const PaymentHistory = () => {
             <Helmet>
                 <title>-PaymentsHistory</title>
             </Helmet>
-            <div>
-                <h3 className="text-3xl">Payment History</h3>
+            <div className='lg:w-4/5 mx-auto'>
+                <h3 className="text-3xl mb-8 text-center">Payment History</h3>
                 <div>
 
                     <div className="overflow-x-auto">
                         <table className="table">
                             {/* head */}
-                            <thead>
+                            <thead className='bg-base-200 shadow'>
                                 <tr>
                                     <th>SL</th>
                                     <th>EMAIL</th>
