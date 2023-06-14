@@ -5,7 +5,7 @@ import ClassDetails from './ClassDetails';
 const Classes = () => {
     const [classes, setAllClasses] = useState([])
     useEffect(() =>{
-        fetch('http://localhost:5000/addClass')
+        fetch('https://summer-camp-school-server-rho-beige.vercel.app/addClass')
         .then(res => res.json())
         .then(data =>{
             const approved = data.filter(approve => approve.status==='approved')

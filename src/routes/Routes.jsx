@@ -65,7 +65,7 @@ const router = createBrowserRouter([
       {
         path: 'feedback/:id',
         element: <FeedBack></FeedBack>,
-        loader: ({ params }) => fetch(`http://localhost:5000/addClass/${params.id}`)
+        loader: ({ params }) => fetch(`https://summer-camp-school-server-rho-beige.vercel.app/addClass/${params.id}`)
       },
       {
         path: 'addClass',
@@ -78,7 +78,7 @@ const router = createBrowserRouter([
       {
         path: 'updateClass/:id',
         element: <UpdateClass></UpdateClass>,
-        loader: ({ params }) => fetch(`http://localhost:5000/addClass/${params.id}`)
+        loader: ({ params }) => fetch(`https://summer-camp-school-server-rho-beige.vercel.app/addClass/${params.id}`)
       },
       {
         path: 'enrolledClasses',
@@ -95,7 +95,7 @@ const router = createBrowserRouter([
       {
         path: 'payment/:id',
         element: <Payment />,
-        loader: ({ params }) => fetch(`http://localhost:5000/selectedClass/${params.id}`)
+        loader: ({ params }) => fetch(`https://summer-camp-school-server-rho-beige.vercel.app/selectedClass/${params.id}`)
       },
     ]
   }

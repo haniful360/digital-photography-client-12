@@ -6,18 +6,18 @@ import { useQuery } from 'react-query';
 const MySelectedClass = () => {
     // const [selectedClass, setSelectedClass] = useState([]);
     const { data: selectedClass = [], refetch } = useQuery(['selectedClass'], async () => {
-        const res = await fetch('http://localhost:5000/selectedClass')
+        const res = await fetch('https://summer-camp-school-server-rho-beige.vercel.app/selectedClass')
         return res.json();
     })
     // useEffect(() =>{
-    //     fetch(`http://localhost:5000/selectedClass`)
+    //     fetch(`https://summer-camp-school-server-rho-beige.vercel.app/selectedClass`)
     //     .then(res => res.json())
     //     .then(data =>setSelectedClass(data))
     // },[])
     return (
         <div>
             <Helmet>
-                <title>-EnrolledClass</title>
+                <title>D.Photography-EnrolledClass</title>
             </Helmet>
             <div className='w-full lg:px-4'>
         <h3 className='text-3xl text-center font-semibold my-6'>My selected class</h3>

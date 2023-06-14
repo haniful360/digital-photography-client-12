@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 const Instructors = () => {
     const [allInstructors, setAllInstructors] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://summer-camp-school-server-rho-beige.vercel.app/users')
             .then(res => res.json())
             .then(data => {
                 const instructors = data.filter(instructor =>instructor.role==='instructor')
@@ -17,10 +17,10 @@ const Instructors = () => {
     return (
         <div className='max-w-6xl mx-auto my-16'>
             <Helmet>
-                <title>photography-instructor</title>
+                <title>D.Photography-instructor</title>
             </Helmet>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:px-0  px-2">
-            {allInstructors.map(instructor => <div className="card  bg-base-100 shadow-lg">
+            {allInstructors.map(instructor => <div key={instructor._id} className="card  bg-base-100 shadow-lg">
                 <figure><img className='w-full h-[300px]' src={instructor.photo} alt="instructor" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{instructor.name}</h2>

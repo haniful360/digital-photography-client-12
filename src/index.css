@@ -7,6 +7,7 @@ li{
   list-style-type: none;
   font-size: 20px;
 }
+.testimonials h1,
 .popular-instructor h1,
 .popular-classes h1{
     font-size: 32px;
@@ -19,7 +20,7 @@ li{
     color: #213b52;
   }
   
-  /* .shop-categories h2::before, */
+.testimonials h1::before,
   .popular-instructor h1::before,
   .popular-classes h1::before {
     content: "";
@@ -31,7 +32,7 @@ li{
     bottom: 1px;
     left: calc(50% - 60px);
   }
-  
+  .testimonials h1::after,
   .popular-instructor h1::after,
   .popular-classes h1::after {
     content: "";

@@ -28,7 +28,7 @@ const SignUp = () => {
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         const saveUser = {name:data.name, email:data.email, photo: data.photoURL}
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://summer-camp-school-server-rho-beige.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -55,11 +55,11 @@ const SignUp = () => {
     }
 
     return (
-        <section>
+        <section className='my-12'>
             <Helmet>
-                <title>SignUp</title>
+                <title>D.Photography-SignUp</title>
             </Helmet>
-            <div className="bg-gray-50 lg:min-h-screen flex items-center justify-center">
+            <div className="lg:min-h-screen flex items-center justify-center">
 
                 <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
 

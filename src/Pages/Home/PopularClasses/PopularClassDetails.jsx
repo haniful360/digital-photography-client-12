@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from "framer-motion"
 const PopularClassDetails = ({ popularClass }) => {
-    console.log(popularClass);
     const { name, email, image, instructorName, price, seat } = popularClass
     return (
         <div className="card bg-base-100 shadow-xl">

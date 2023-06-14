@@ -50,7 +50,7 @@ const AddClass = () => {
     return (
         <div>
             <Helmet>
-                <title>-AddClass</title>
+                <title>D.Photography-AddClass</title>
             </Helmet>
             <div className=' md:w-3/4 mx-auto'>
             <div className="text-3xl text-center">Add Class</div>

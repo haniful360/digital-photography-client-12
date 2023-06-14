@@ -3,17 +3,19 @@ import { Helmet } from 'react-helmet-async';
 import Banner from '../Banner/Banner';
 import PopularClasses from '../PopularClasses/PopularClasses';
 import PopularInstructor from '../PopularInstructor/PopularInstructor';
+import Testimonials from '../Testimonials/Testimonials';
 
 const Home = () => {
     return (
         
         <div className='max-w-6xl mx-auto'>
             <Helmet>
-                <title>photo- Home</title>
+                <title>D.Photography - Home</title>
             </Helmet>
             <Banner/>
             <PopularClasses/>
             <PopularInstructor/>
+            <Testimonials></Testimonials>
             
         </div>
     );

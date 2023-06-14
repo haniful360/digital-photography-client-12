@@ -6,13 +6,13 @@ import { Helmet } from 'react-helmet-async';
 const ManagesClasses = () => {
 
     const { data: addClass = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch('http://localhost:5000/addClass')
+        const res = await fetch('https://summer-camp-school-server-rho-beige.vercel.app/addClass')
         return res.json();
     })
     return (
        <div>
         <Helmet>
-                <title>-ManageClasses</title>
+                <title>D.Photography-ManageClasses</title>
             </Helmet>
          <div className='w-full lg:px-4'>
             <h3 className='text-3xl text-center my-8'>Manage classes</h3>

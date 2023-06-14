@@ -17,11 +17,10 @@ const Login = () => {
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
     const onSubmit = data => {
-        // console.log(data);
+      
         signInUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
-                // console.log(loggedUser);
                 toast('Login success full')
                 navigate(from, { replace: true });
             })
@@ -36,9 +35,9 @@ const Login = () => {
     }
 
     return (
-        <section>
+        <section className='my-12'>
             <Helmet>
-                <title>Login</title>
+                <title>D.Photography-Login</title>
             </Helmet>
             <div className="lg:min-h-screen flex items-center justify-center">
 

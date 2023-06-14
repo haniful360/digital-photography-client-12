@@ -5,7 +5,7 @@ import './PopularClasses.css'
 const PopularClasses = () => {
     const [popularClasses, setPopularClasses] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/addClass')
+        fetch('https://summer-camp-school-server-rho-beige.vercel.app/addClass')
             .then(res => res.json())
             .then(data => setPopularClasses(data))
     }, [])

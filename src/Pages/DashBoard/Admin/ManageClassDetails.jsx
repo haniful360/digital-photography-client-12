@@ -10,7 +10,7 @@ const ManageClassDetails = ({ manageClass, refetch }) => {
     const { _id, name, image, email, instructorName, price, seat, status } = manageClass;
 
     const handleApproved = (manageClass) => {
-        fetch(`http://localhost:5000/addClass/approved/${manageClass._id}`, {
+        fetch(`https://summer-camp-school-server-rho-beige.vercel.app/addClass/approved/${manageClass._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -24,7 +24,7 @@ const ManageClassDetails = ({ manageClass, refetch }) => {
             })
     }
     const handleDenied = (manageClass) => {
-        fetch(`http://localhost:5000/addClass/denied/${manageClass._id}`, {
+        fetch(`https://summer-camp-school-server-rho-beige.vercel.app/addClass/denied/${manageClass._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

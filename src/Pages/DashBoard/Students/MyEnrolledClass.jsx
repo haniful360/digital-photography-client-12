@@ -5,7 +5,7 @@ import EnrollClassDetails from './EnrollClassDetails';
 const MyEnrolledClass = () => {
     const [enrolled, setEnrolled] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/payments')
+        fetch('https://summer-camp-school-server-rho-beige.vercel.app/payments')
             .then(res => res.json())
             .then(data => setEnrolled(data))
     }, [])
@@ -13,7 +13,7 @@ const MyEnrolledClass = () => {
     return (
         <div className='w-5/6 mx-auto'>
             <Helmet>
-                <title>-EnrolledClass</title>
+                <title>D.Photography-EnrolledClass</title>
 
             </Helmet>
             <h2 className='text-3xl my-8  text-center'>My Enrolled Classes</h2>

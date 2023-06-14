@@ -7,14 +7,14 @@ const MyClass = () => {
     const { user } = useAuth();
     const [classes, setClasses] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/instructor?email=${user.email}`)
+        fetch(`https://summer-camp-school-server-rho-beige.vercel.app/instructor?email=${user.email}`)
             .then(res => res.json())
             .then(data => setClasses(data))
     }, []);
     return (
        <div>
         <Helmet>
-                <title>-MyClass</title>
+                <title>D.Photography-MyClass</title>
             </Helmet>
         <h3 className='text-3xl text-center font-semibold my-6'>My class</h3>
          <div className="overflow-x-auto w-full px-2">

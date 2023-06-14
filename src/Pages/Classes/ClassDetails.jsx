@@ -19,7 +19,7 @@ const ClassDetails = ({ classItem }) => {
     const handleSelect = (classItem) => {
         if (user) {
             delete classItem._id
-            axios.post(`http://localhost:5000/selectedClass`, classItem)
+            axios.post(`https://summer-camp-school-server-rho-beige.vercel.app/selectedClass`, classItem)
                 .then(data => {
                     console.log(data.data);
                     if (data.data.insertedId) {

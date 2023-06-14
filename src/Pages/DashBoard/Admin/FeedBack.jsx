@@ -11,7 +11,7 @@ const FeedBack = () => {
         const form = e.target;
         const feedback = form.feedback.value;
         console.log(feedback);
-        axios.post('http://localhost:5000/addClass/feedback', feedback)
+        axios.post('https://summer-camp-school-server-rho-beige.vercel.app/addClass/feedback', feedback)
             .then(res => {
                 console.log(res.data);
             })
