@@ -37,17 +37,17 @@ export default function App() {
         className="mySwiper"
       >
         <SwiperSlide>
-        <img src="https://i.ibb.co/cTVPtP2/Blue-Black-Creative-Digital-Photography-Service-Banner.png" alt="" />
+        <img src="https://i.ibb.co/TkJGzqH/Blue-Black-Creative-Digital-Photography-Service-Banner.png" alt="" />
         </SwiperSlide>
         <SwiperSlide>
             
-            <img src="https://i.ibb.co/7pBWxrF/Red-Modern-Business-Workshop-Photograpy-Medium-Banner-Landscap.png" alt="" />
+            <img src="https://i.ibb.co/1srm146/Red-Modern-Business-Workshop-Photograpy-Medium-Banner-Landscap.png" alt="" />
         </SwiperSlide>
         <SwiperSlide>
-            <img src="https://i.ibb.co/Rhk7dt4/Black-Brown-Minimalist-Camera-Desktop-Prototype.png" alt="" />
+            <img src="https://i.ibb.co/JpfCqR1/Black-Simple-New-Digital-Camera-Review-Youtube-Thumbnail.png" alt="" />
         </SwiperSlide>
         <SwiperSlide>
-            <img src="https://i.ibb.co/F6Z12Nj/Grey-Minimalist-Flash-Sale-Facebook-AD.png" alt="" />
+            <img src="https://i.ibb.co/TkJGzqH/Blue-Black-Creative-Digital-Photography-Service-Banner.png" alt="" />
         </SwiperSlide>
         
         <div className="autoplay-progress" slot="container-end">
@@ -60,3 +60,8 @@ export default function App() {
     </>
   );
 }
+
+// https://i.ibb.co/cTVPtP2/Blue-Black-Creative-Digital-Photography-Service-Banner.png
+// https://i.ibb.co/7pBWxrF/Red-Modern-Business-Workshop-Photograpy-Medium-Banner-Landscap.png
+// https://i.ibb.co/Rhk7dt4/Black-Brown-Minimalist-Camera-Desktop-Prototype.png
+// https://i.ibb.co/F6Z12Nj/Grey-Minimalist-Flash-Sale-Facebook-AD.png
